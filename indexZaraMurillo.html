@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>toda la creacion:</h1>
+    <p>
+        import time <br>
+        import sqlite3 as sql <br>
+        
+        def createDB(): <br>
+            conn = sql.connect("autoconocimiento.db") <br>
+            print("Base de datos autoconocimiento creada") <br>
+            conn.commit() <br>
+            conn.close() <br>
+            
+        def createTable(): <br>
+            conn = sql.connect("autoconocimiento.db") <br>
+            cursor = conn.cursor() <br>
+            cursor.execute("""CREATE TABLE experience_motivations ( <br>
+            motivation_id INTEGER PRIMARY KEY AUTOINCREMENT, <br>
+            experience_id INTEGER, <br>
+            expected_impact TEXT, <br>
+            motivation_level INTEGER, <br>
+            target_date DATE, <br>
+            FOREIGN KEY (experience_id) REFERENCES growth_experiences(growth_id) <br>
+        );              <br>
+            """) <br>
+            print("Tabla creada") <br>
+            conn.commit() <br>
+            conn.close() <br>
+            
+        if __name__ == "__main__":  <br>
+            createDB() <br>
+            createTable() <br>
+    </p>
+<img src="creacionBD Zara MurilloG.PNG" alt="">
+<p>
+    <h1>Creacion de una base de datos con python</h1>
+    import time <br>
+import sqlite3 as sql <br>
+def createDB():# Crear o conectar a la BD 'autoconocimiento.db' <br>
+conn = sql.connect("autoconocimiento.db") <br>
+print("Base de datos creada o conectada correctamente.") <br>
+conn.close() <br>
+if __name__ == "__main__": <br>
+createDB() # Primero creamos la base de datos <br>
+</p>
+<img src="creacionBDZaraMurillo2.PNG" alt="">
+
+<h1>Creacion de la tabla</h1>
+<p>
+    def createTable(): <br>
+    conn = sql.connect("autoconocimientoZaraMurillo.db") <br>
+    cursor = conn.cursor() <br>
+    cursor.execute("""CREATE TABLE experience_motivations ( <br>
+    motivation_id INTEGER PRIMARY KEY AUTOINCREMENT, <br>
+    experience_id INTEGER, <br>
+    expected_impact TEXT, <br>
+    motivation_level INTEGER, <br>
+    target_date DATE, <br>
+    FOREIGN KEY (experience_id) REFERENCES growth_experiences(growth_id) <br>
+);              <br>
+    """) <br>
+    print("Tabla creada exitosamente") <br>
+    conn.commit() <br>
+    conn.close() <br>
+    <img src="creaciondeTablaZaraMurillo.PNG" alt="">
+</p>
+<h1>Insertar datos</h1>
+<p>
+    def insertRow (motivation_id,experience_id,expected_impact,motivation_level,target_date): <br>
+    conn = sql.connect("autoconocimientoZaraMurillo.db") <br>
+    cursor = conn.cursor() <br>
+    instruction = """INSERT INTO experience_motivations (motivation_id, experience_id, expected_impact, motivation_level, target_date) <br>
+                     VALUES (?, ?, ?, ?, ?)""" <br>
+    cursor.execute(instruction, (motivation_id, experience_id, expected_impact, motivation_level, target_date)) <br>
+    conn.commit() <br>
+    print("Fila de experiencias insertada correctamente") <br>
+    conn.close() <br>
+if __name__ == "__main__":   <br>
+# createDB() <br>
+# createTable() <br>
+insertRow(10, 5, "Aprender nuevas habilidades", 8, "2024-12-31")<br>
+<img src="InsertardatosZaraMurillo.PNG" alt="">
+</p>
+
+</body>
+</html>
